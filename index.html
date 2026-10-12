@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park Lane Motors Chatbot Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Only the floating chatbot remains -->
+    <button
+        id="chat-toggle"
+        class="chat-toggle"
+        type="button"
+        aria-label="Open chat"
+        aria-expanded="false"
+    >
+        <span id="toggle-icon">✦</span>
+    </button>
+
+    <section
+        id="chat-widget"
+        class="chat-widget"
+        aria-label="Park Lane Motors chat"
+        hidden
+    >
+        <header class="chat-header">
+            <div class="assistant-avatar">PL</div>
+            <div class="assistant-info">
+                <strong>Park Lane Assistant</strong>
+                <span><i class="online-dot"></i> Virtual assistant</span>
+            </div>
+            <button id="chat-close" class="close-button" type="button"
+                    aria-label="Close chat">&times;</button>
+        </header>
+
+        <div id="chat-messages" class="chat-messages" aria-live="polite">
+            <div class="message bot-message">
+                <div class="bubble">
+                    Welcome to Park Lane Motors, Dubai!
+                    I can help with buying a car, selling your vehicle,
+                    finance enquiries, and general dealership questions.
+                    How can I help?
+                </div>
+                <span class="message-time">Assistant</span>
+            </div>
+
+            <div class="quick-replies">
+                <button type="button" data-message="I want to buy a car">Buy a car</button>
+                <button type="button" data-message="I want to sell my car">Sell a car</button>
+                <button type="button" data-message="Tell me about finance">Finance</button>
+                <button type="button" data-message="How can I contact you?">Contact</button>
+            </div>
+        </div>
+
+        <div class="chat-footer">
+            <form id="chat-form">
+                <label class="sr-only" for="chat-input">Your message</label>
+                <input
+                    id="chat-input"
+                    type="text"
+                    placeholder="Ask us anything..."
+                    maxlength="1000"
+                    autocomplete="off"
+                    required
+                >
+                <button id="send-button" type="submit" aria-label="Send message">➤</button>
+            </form>
+
+            <a
+                class="whatsapp-link"
+                href="https://wa.me/{{ whatsapp_number }}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >Contact us on WhatsApp ↗</a>
+
+            <p class="powered-by">Virtual assistant demo · ZnextStudio</p>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
